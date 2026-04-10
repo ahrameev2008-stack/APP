@@ -66,13 +66,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-ATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': config('POSTGRES_DB', default='newssite'),
         'USER': config('POSTGRES_USER', default='newsuser'),
         'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': config('DB_HOST', default='localhost'),
+        'HOST': config('DB_HOST', default='db'),
         'PORT': config('DB_PORT', default='5432', cast=int),
         'ATOMIC_REQUESTS': True,
     }

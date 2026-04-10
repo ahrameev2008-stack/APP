@@ -72,12 +72,19 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     def get_posts_count(self, obj):
         """Безопасное получение количества постов"""
-        return obj.posts.count()
-    
+        try:
+            return obj.posts.count()
+        except AttributeError:
+            # Если атрибут posts не существует, возвращаем 0
+            return 0
 
     def get_comments_count(self, obj):
         """Безопасное получение количества комментариев"""
-        return obj.comments.count()
+        try:
+            return obj.comments.count()
+        except AttributeError:
+            # Если атрибут comments не существует, возвращаем 0
+            return 0
     
 class UserUpdateSerializer(serializers.ModelSerializer):
     """Сериализатор для обновления профиля пользователя"""
